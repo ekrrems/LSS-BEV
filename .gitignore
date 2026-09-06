@@ -1,0 +1,12 @@
+/lss_venv
+/.vscode
+
+.DS_Store
+
+outputs
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+.env
