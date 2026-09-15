@@ -1,5 +1,7 @@
 # Lift-Splat-Shoot BEV Mapping in Habitat
 
+![Six-camera RGB-to-BEV global mapping](docs/lss_bev.gif)
+
 An RGB-only bird's-eye-view (BEV) perception and mapping prototype for indoor
 robot navigation. Six synchronized Habitat cameras surround the agent, a
 depth-supervised Lift-Splat-Shoot model predicts a local occupancy grid, and
