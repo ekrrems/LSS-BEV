@@ -269,51 +269,6 @@ current agent-relative occupancy probability, and the right-bottom panel shows
 the accumulated global BEV map. Habitat's exact agent pose currently provides
 the world transform.
 
-## ROS2 and Nav2 roadmap
-
-The intended deployment interface is:
-
-1. Subscribe to six synchronized RGB camera topics.
-2. Run RGB-to-BEV inference in a ROS2 node.
-3. Receive `map -> odom -> base_link` from SLAM/localization.
-4. Transform local BEV evidence into the `map` frame.
-5. Publish a `nav_msgs/OccupancyGrid` and/or a Nav2 obstacle layer.
-6. Use Nav2 for global planning and local collision avoidance.
-
-The learned depth head should initially support perception, not replace
-localization. A real depth camera, lidar, wheel odometry, IMU, or visual-inertial
-odometry is preferable for SLAM pose estimation. This separation prevents
-perception hallucinations from directly producing localization drift.
-
-## Known limitations
-
-- Training and reported testing currently use one HSSD scene.
-- Predicted depth is lower-resolution and less precise than a physical depth
-  sensor.
-- The global demo uses perfect Habitat pose rather than estimated SLAM pose.
-- Dynamic obstacles have not yet been modeled explicitly.
-- Temporal fusion does not yet decay stale occupied cells.
-- No ROS2 message or TF integration is included yet.
-
-## Recommended next experiments
-
-1. Record at least 5-10 HSSD scenes.
-2. Split validation and test data by complete scene, not only temporal block.
-3. Evaluate occupancy IoU, precision, recall, depth MAE, and map consistency on
-   unseen scenes.
-4. Add confidence decay and dynamic-obstacle handling to temporal fusion.
-5. Implement the ROS2 BEV inference and occupancy-fusion nodes.
-
-## Data and licensing
-
-Do not commit HSSD assets, generated RGB/depth recordings, BEV targets, or
-trained checkpoints. HSSD remains subject to its own license and distribution
-terms.
-
-This repository does not currently contain a project license. Add a compatible
-license before describing the repository as open source or accepting external
-reuse. Confirm compatibility with any upstream Lift-Splat-Shoot code first.
-
 ## References
 
 - [Lift, Splat, Shoot: Encoding Images from Arbitrary Camera Rigs by Explicitly Unprojecting to 3D](https://arxiv.org/abs/2008.05711)
