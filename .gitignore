@@ -1,12 +1,31 @@
-/lss_venv
-/.vscode
-
-.DS_Store
-
-outputs
-
+# Environments and editors
+/.venv/
+/venv/
+/lss_venv/
+/.vscode/
+/.idea/
+.env
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# macOS
+.DS_Store
+# Licensed and generated datasets
+/data/
+/outputs/
+# Models and experiment tracking
+*.pt
+*.pth
+*.ckpt
+/runs/
+/wandb/
+/lightning_logs/
+# Generated arrays, logs, and temporary files
+*.npy
+*.npz
+*.log
+*.tmp

@@ -1,0 +1,7 @@
+# Known-working versions from the macOS habitat_env.
+# Install Habitat-Sim 0.3.3 separately for the target platform.
+matplotlib==3.9.4
+numpy==1.26.4
+numpy-quaternion==2023.0.4
+opencv-python==4.10.0.84
+torch==2.8.0

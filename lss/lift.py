@@ -184,8 +184,26 @@ class LiftGeometry(nn.Module):
 		)
 		# [D, Hf, Wf, 3]
 
-		inverse_intrinsics = torch.linalg.inv(
-			intrinsics
+		# inverse_intrinsics = torch.linalg.inv(
+		# 	intrinsics
+		# )
+		flat_intrinsics = intrinsics.reshape(
+			-1,
+			3,
+			3,
+		).contiguous()
+
+		inverse_intrinsics = torch.stack(
+			[
+				torch.linalg.inv(single_intrinsic)
+				for single_intrinsic in flat_intrinsics.unbind(dim=0)
+			],
+			dim=0,
+		).reshape(
+			batch_size,
+			camera_count,
+			3,
+			3,
 		)
 		# [B, N, 3, 3]
 
